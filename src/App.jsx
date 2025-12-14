@@ -6,6 +6,9 @@ const KG_TO_LBS = 2.20462;
 function App() {
   const [weightKg, setWeightKg] = useState('');
   const [weightLbs, setWeightLbs] = useState('');
+  const [plateUnits, setPlateUnits] = useState('kg');
+  const [displayValue, setDisplayValue] = useState('0');
+  const [displayUnit, setDisplayUnit] = useState('kg');
 
   const handleKgChange = (e) => {
     const kg = e.target.value;
@@ -24,6 +27,18 @@ function App() {
       setWeightKg('');
     } else {
       setWeightKg((parseFloat(lbs) / KG_TO_LBS).toFixed(2));
+    }
+  };
+
+  const handleCalculate = () => {
+    if (plateUnits === 'kg') {
+      const value = weightKg ? parseFloat(weightKg) : 0;
+      setDisplayValue(Math.round(value).toString());
+      setDisplayUnit('kg');
+    } else {
+      const value = weightLbs ? parseFloat(weightLbs) : 0;
+      setDisplayValue(Math.round(value).toString());
+      setDisplayUnit('lbs');
     }
   };
 
@@ -50,8 +65,8 @@ function App() {
 
           {/* Center display */}
           <div className="display">
-            <span className="display-value">150</span>
-            <span className="display-unit">kg</span>
+            <span className="display-value">{displayValue}</span>
+            <span className="display-unit">{displayUnit}</span>
             <span className="display-label">TOTAL</span>
           </div>
 
@@ -108,6 +123,8 @@ function App() {
                   name="plateUnits"
                   value="lb"
                   className="radio-input"
+                  checked={plateUnits === 'lb'}
+                  onChange={(e) => setPlateUnits(e.target.value)}
                 />
                 <span className="radio-label">LB</span>
               </label>
@@ -117,7 +134,8 @@ function App() {
                   name="plateUnits"
                   value="kg"
                   className="radio-input"
-                  defaultChecked
+                  checked={plateUnits === 'kg'}
+                  onChange={(e) => setPlateUnits(e.target.value)}
                 />
                 <span className="radio-label">KG</span>
               </label>
@@ -151,7 +169,7 @@ function App() {
         </div>
       </div>
 
-      <button className="calculate-btn">Calculate</button>
+      <button className="calculate-btn" onClick={handleCalculate}>Calculate</button>
     </div>
   );
 }
