@@ -286,3 +286,165 @@
 .calculate-btn:active {
   transform: scale(0.98);
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .plate-math {
+    gap: 1.25rem;
+    padding: 0 1rem;
+  }
+
+  .title {
+    font-size: 3rem;
+    -webkit-text-stroke: 1.5px #2a2a2a;
+  }
+
+  .bar {
+    width: 50px;
+  }
+
+  .plate.xlarge {
+    height: 90px;
+    width: 18px;
+  }
+
+  .plate.large {
+    height: 78px;
+    width: 16px;
+  }
+
+  .plate.medium {
+    height: 62px;
+    width: 14px;
+  }
+
+  .plate.small {
+    height: 46px;
+    width: 12px;
+  }
+
+  .display {
+    padding: 0.3rem 0.75rem;
+  }
+
+  .display-value {
+    font-size: 1.5rem;
+  }
+
+  .display-unit {
+    font-size: 0.75rem;
+  }
+
+  .display-label {
+    font-size: 0.6rem;
+  }
+
+  .form-section {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .radio-groups {
+    gap: 2.5rem;
+  }
+
+  .calculate-btn {
+    max-width: 100%;
+    font-size: 1.2rem;
+    padding: 0.85rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.25rem;
+    -webkit-text-stroke: 1px #2a2a2a;
+  }
+
+  .weight-inputs {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .bar {
+    width: 30px;
+  }
+
+  .collar {
+    width: 8px;
+    height: 16px;
+  }
+
+  .plate.xlarge {
+    height: 75px;
+    width: 16px;
+  }
+
+  .plate.large {
+    height: 65px;
+    width: 14px;
+  }
+
+  .plate.medium {
+    height: 52px;
+    width: 12px;
+  }
+
+  .plate.small {
+    height: 40px;
+    width: 10px;
+  }
+
+  .display {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .display-value {
+    font-size: 1.25rem;
+  }
+
+  .display-unit {
+    font-size: 0.65rem;
+  }
+
+  .display-label {
+    font-size: 0.5rem;
+  }
+
+  .input-label {
+    font-size: 1rem;
+  }
+
+  .weight-input {
+    padding: 0.75rem;
+    padding-right: 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  .input-suffix {
+    font-size: 0.85rem;
+    right: 0.75rem;
+  }
+
+  .radio-groups {
+    gap: 2rem;
+  }
+
+  .radio-group-label {
+    font-size: 0.85rem;
+  }
+
+  .radio-label {
+    font-size: 0.85rem;
+  }
+
+  .radio-input {
+    width: 16px;
+    height: 16px;
+  }
+
+  .calculate-btn {
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+  }
+}
