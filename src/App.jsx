@@ -175,7 +175,9 @@ function App() {
                   className="radio-input"
                   defaultChecked
                 />
-                <span className="radio-label">20kg</span>
+                <span className="radio-label">
+                  {plateUnits === "lb" ? "45lb" : "20kg"}
+                </span>
               </label>
               <label className="radio-option">
                 <input
@@ -184,7 +186,9 @@ function App() {
                   value="15"
                   className="radio-input"
                 />
-                <span className="radio-label">15kg</span>
+                <span className="radio-label">
+                  {plateUnits === "lb" ? "33lb" : "15kg"}
+                </span>
               </label>
             </div>
           </div>
