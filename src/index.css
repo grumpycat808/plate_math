@@ -34,7 +34,7 @@ body {
   padding: 2rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   #root {
     padding: 1rem;
   }
