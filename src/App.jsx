@@ -1,24 +1,24 @@
-import { useState } from 'react';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 const KG_TO_LBS = 2.20462;
 const MAX_KG = 600;
 const MAX_LBS = 1322.77;
 
 function App() {
-  const [weightKg, setWeightKg] = useState('');
-  const [weightLbs, setWeightLbs] = useState('');
-  const [plateUnits, setPlateUnits] = useState('kg');
-  const [displayValue, setDisplayValue] = useState('0');
-  const [displayUnit, setDisplayUnit] = useState('kg');
+  const [weightKg, setWeightKg] = useState("");
+  const [weightLbs, setWeightLbs] = useState("");
+  const [plateUnits, setPlateUnits] = useState("kg");
+  const [displayValue, setDisplayValue] = useState("0");
+  const [displayUnit, setDisplayUnit] = useState("kg");
 
   const handleKgChange = (e) => {
     const input = e.target.value;
 
     // Allow empty input
-    if (input === '') {
-      setWeightKg('');
-      setWeightLbs('');
+    if (input === "") {
+      setWeightKg("");
+      setWeightLbs("");
       return;
     }
 
@@ -45,9 +45,9 @@ function App() {
     const input = e.target.value;
 
     // Allow empty input
-    if (input === '') {
-      setWeightKg('');
-      setWeightLbs('');
+    if (input === "") {
+      setWeightKg("");
+      setWeightLbs("");
       return;
     }
 
@@ -71,14 +71,14 @@ function App() {
   };
 
   const handleCalculate = () => {
-    if (plateUnits === 'kg') {
+    if (plateUnits === "kg") {
       const value = weightKg ? parseFloat(weightKg) : 0;
       setDisplayValue(Math.round(value).toString());
-      setDisplayUnit('kg');
+      setDisplayUnit("kg");
     } else {
       const value = weightLbs ? parseFloat(weightLbs) : 0;
       setDisplayValue(Math.round(value).toString());
-      setDisplayUnit('lbs');
+      setDisplayUnit("lbs");
     }
   };
 
@@ -91,16 +91,12 @@ function App() {
         <div className="barbell">
           {/* Left plates */}
           <div className="plates-left">
-            <div className="plate xlarge"></div>
-            <div className="plate large"></div>
-            <div className="plate medium"></div>
-            <div className="plate small"></div>
-          </div>
-
-          {/* Left bar section */}
-          <div className="bar-section">
-            <div className="collar"></div>
-            <div className="bar"></div>
+            <div className="plate plate-45"></div>
+            <div className="plate plate-45"></div>
+            <div className="plate plate-35"></div>
+            <div className="plate plate-25"></div>
+            <div className="plate plate-10"></div>
+            <div className="plate plate-5"></div>
           </div>
 
           {/* Center display */}
@@ -108,20 +104,6 @@ function App() {
             <span className="display-value">{displayValue}</span>
             <span className="display-unit">{displayUnit}</span>
             <span className="display-label">TOTAL</span>
-          </div>
-
-          {/* Right bar section */}
-          <div className="bar-section">
-            <div className="bar"></div>
-            <div className="collar"></div>
-          </div>
-
-          {/* Right plates */}
-          <div className="plates-right">
-            <div className="plate xlarge"></div>
-            <div className="plate large"></div>
-            <div className="plate medium"></div>
-            <div className="plate small"></div>
           </div>
         </div>
       </div>
@@ -163,7 +145,7 @@ function App() {
                   name="plateUnits"
                   value="lb"
                   className="radio-input"
-                  checked={plateUnits === 'lb'}
+                  checked={plateUnits === "lb"}
                   onChange={(e) => setPlateUnits(e.target.value)}
                 />
                 <span className="radio-label">LB</span>
@@ -174,7 +156,7 @@ function App() {
                   name="plateUnits"
                   value="kg"
                   className="radio-input"
-                  checked={plateUnits === 'kg'}
+                  checked={plateUnits === "kg"}
                   onChange={(e) => setPlateUnits(e.target.value)}
                 />
                 <span className="radio-label">KG</span>
@@ -209,7 +191,9 @@ function App() {
         </div>
       </div>
 
-      <button className="calculate-btn" onClick={handleCalculate}>Calculate</button>
+      <button className="calculate-btn" onClick={handleCalculate}>
+        Calculate
+      </button>
     </div>
   );
 }
