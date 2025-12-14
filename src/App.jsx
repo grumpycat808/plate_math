@@ -1,6 +1,32 @@
+import { useState } from 'react';
 import './App.css';
 
+const KG_TO_LBS = 2.20462;
+
 function App() {
+  const [weightKg, setWeightKg] = useState('');
+  const [weightLbs, setWeightLbs] = useState('');
+
+  const handleKgChange = (e) => {
+    const kg = e.target.value;
+    setWeightKg(kg);
+    if (kg === '' || isNaN(kg)) {
+      setWeightLbs('');
+    } else {
+      setWeightLbs((parseFloat(kg) * KG_TO_LBS).toFixed(2));
+    }
+  };
+
+  const handleLbsChange = (e) => {
+    const lbs = e.target.value;
+    setWeightLbs(lbs);
+    if (lbs === '' || isNaN(lbs)) {
+      setWeightKg('');
+    } else {
+      setWeightKg((parseFloat(lbs) / KG_TO_LBS).toFixed(2));
+    }
+  };
+
   return (
     <div className="plate-math">
       <h1 className="title">Plate Math</h1>
@@ -54,6 +80,8 @@ function App() {
             <input
               type="text"
               className="weight-input"
+              value={weightKg}
+              onChange={handleKgChange}
               placeholder=""
             />
             <span className="input-suffix">kg</span>
@@ -62,6 +90,8 @@ function App() {
             <input
               type="text"
               className="weight-input"
+              value={weightLbs}
+              onChange={handleLbsChange}
               placeholder=""
             />
             <span className="input-suffix">lbs</span>
