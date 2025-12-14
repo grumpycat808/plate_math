@@ -1,42 +1,288 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.plate-math {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Title Styles - Metallic 3D Effect */
+.title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(180deg, #e8e8e8 0%, #b0b0b0 40%, #888888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-stroke: 2px #2a2a2a;
+  paint-order: stroke fill;
+  filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.5));
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Barbell Visualization */
+.barbell-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0;
 }
 
-.card {
-  padding: 2em;
+.barbell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.read-the-docs {
-  color: #888;
+.plates-left,
+.plates-right {
+  display: flex;
+  align-items: center;
+}
+
+.plates-left {
+  flex-direction: row-reverse;
+}
+
+/* Capsule-shaped plates */
+.plate {
+  background: linear-gradient(
+    90deg,
+    #5a5a5a 0%,
+    #4a4a4a 30%,
+    #3a3a3a 50%,
+    #4a4a4a 70%,
+    #5a5a5a 100%
+  );
+  border: 2px solid #5a5a5a;
+  margin: 0 1px;
+  border-radius: 6px;
+}
+
+.plate.xlarge {
+  height: 110px;
+  width: 22px;
+  border-radius: 8px;
+}
+
+.plate.large {
+  height: 95px;
+  width: 20px;
+}
+
+.plate.medium {
+  height: 75px;
+  width: 18px;
+}
+
+.plate.small {
+  height: 55px;
+  width: 14px;
+}
+
+.bar-section {
+  display: flex;
+  align-items: center;
+}
+
+.bar {
+  width: 80px;
+  height: 8px;
+  background: linear-gradient(180deg, #6a6a6a 0%, #4a4a4a 50%, #3a3a3a 100%);
+}
+
+.collar {
+  width: 12px;
+  height: 20px;
+  background: linear-gradient(90deg, #5a5a5a 0%, #3a3a3a 50%, #5a5a5a 100%);
+  border-radius: 2px;
+}
+
+/* Digital Display */
+.display {
+  background: linear-gradient(180deg, #1a4a4a 0%, #0d3535 100%);
+  border: 3px solid #2a5a5a;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.display-value {
+  font-family: "Courier New", monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #5ce6e6;
+  text-shadow: 0 0 8px rgba(92, 230, 230, 0.6);
+}
+
+.display-unit {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #5ce6e6;
+  text-transform: uppercase;
+}
+
+.display-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #5ce6e6;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* Form Section */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 520px;
+}
+
+.input-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+/* Weight Inputs */
+.weight-inputs {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.input-group {
+  flex: 1;
+  position: relative;
+}
+
+.weight-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  padding-right: 3rem;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid #e08a14;
+  border-radius: 6px;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.weight-input:focus {
+  border-color: #f5a623;
+  box-shadow: 0 0 0 3px rgba(224, 138, 20, 0.25);
+}
+
+.weight-input::placeholder {
+  color: #6b6b6b;
+}
+
+.input-suffix {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #e08a14;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Radio Groups */
+.radio-groups {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.radio-group-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #b0b0b0;
+}
+
+.radio-options {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.radio-input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #707070;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.radio-input:checked {
+  border-color: #e08a14;
+  background: #e08a14;
+}
+
+.radio-input:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: #1a1a1a;
+  border-radius: 50%;
+}
+
+.radio-label {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Calculate Button */
+.calculate-btn {
+  width: 100%;
+  max-width: 520px;
+  padding: 0.9rem 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #e08a14;
+  background: rgba(60, 40, 20, 0.4);
+  border: 2px solid #e08a14;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.calculate-btn:hover {
+  background: rgba(224, 138, 20, 0.15);
+  box-shadow: 0 0 16px rgba(224, 138, 20, 0.3);
+}
+
+.calculate-btn:active {
+  transform: scale(0.98);
 }
