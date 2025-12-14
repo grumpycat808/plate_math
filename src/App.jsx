@@ -5,13 +5,19 @@ const KG_TO_LBS = 2.20462;
 const MAX_KG = 600;
 const MAX_LBS = 1322.77;
 
-// Plate weights in lbs (one side)
-const PLATE_WEIGHTS = [45, 35, 25, 10, 5];
+// Plate weights (one side)
+const PLATE_WEIGHTS_LB = [45, 35, 25, 10, 5];
+const PLATE_WEIGHTS_KG = [25, 20, 15, 10, 5, 2.5];
 
 // Barbell weights: value -> {kg, lb}
 const BARBELL_WEIGHTS = {
-  "20": { kg: 20, lb: 45 },
-  "15": { kg: 15, lb: 33 },
+  20: { kg: 20, lb: 45 },
+  15: { kg: 15, lb: 33 },
+};
+
+// Helper to get plate class name (handles 2.5 -> 2-5)
+const getPlateClassName = (weight) => {
+  return `plate-${String(weight).replace(".", "-")}`;
 };
 
 function App() {
@@ -22,6 +28,7 @@ function App() {
   const [displayValue, setDisplayValue] = useState("225");
   const [displayUnit, setDisplayUnit] = useState("lbs");
   const [plates, setPlates] = useState([45, 45]);
+  const [displayedPlateUnits, setDisplayedPlateUnits] = useState("lb");
 
   const handleKgChange = (e) => {
     const input = e.target.value;
@@ -81,11 +88,11 @@ function App() {
     }
   };
 
-  const calculatePlates = (weightPerSide) => {
+  const calculatePlates = (weightPerSide, plateWeights) => {
     const result = [];
     let remaining = weightPerSide;
 
-    for (const plateWeight of PLATE_WEIGHTS) {
+    for (const plateWeight of plateWeights) {
       while (remaining >= plateWeight) {
         result.push(plateWeight);
         remaining -= plateWeight;
@@ -96,28 +103,45 @@ function App() {
   };
 
   const handleCalculate = () => {
-    // Get total weight in lbs for plate calculation
-    const totalWeightLbs = weightLbs ? parseFloat(weightLbs) : 0;
     const barbell = BARBELL_WEIGHTS[barbellWeight];
-    const barbellLbs = barbell.lb;
 
-    // Calculate weight per side (total - barbell) / 2
-    const weightPerSide = Math.max(0, (totalWeightLbs - barbellLbs) / 2);
+    // Update displayed plate units
+    setDisplayedPlateUnits(plateUnits);
 
-    // Calculate plates needed for one side
-    const calculatedPlates = calculatePlates(weightPerSide);
-    setPlates(calculatedPlates);
-
-    // Calculate actual total weight on barbell (plates × 2 + barbell)
-    const platesTotal = calculatedPlates.reduce((sum, plate) => sum + plate, 0);
-    const actualTotalLbs = platesTotal * 2 + barbellLbs;
-
-    // Update display with actual barbell weight
     if (plateUnits === "kg") {
-      const actualTotalKg = actualTotalLbs / KG_TO_LBS;
+      // Calculate in kg
+      const totalWeightKg = weightKg ? parseFloat(weightKg) : 0;
+      const barbellKg = barbell.kg;
+
+      // Calculate weight per side (total - barbell) / 2
+      const weightPerSide = Math.max(0, (totalWeightKg - barbellKg) / 2);
+
+      // Calculate plates needed for one side
+      const calculatedPlates = calculatePlates(weightPerSide, PLATE_WEIGHTS_KG);
+      setPlates(calculatedPlates);
+
+      // Calculate actual total weight on barbell (plates × 2 + barbell)
+      const platesTotal = calculatedPlates.reduce((sum, plate) => sum + plate, 0);
+      const actualTotalKg = platesTotal * 2 + barbellKg;
+
       setDisplayValue(Math.round(actualTotalKg).toString());
       setDisplayUnit("kg");
     } else {
+      // Calculate in lbs
+      const totalWeightLbs = weightLbs ? parseFloat(weightLbs) : 0;
+      const barbellLbs = barbell.lb;
+
+      // Calculate weight per side (total - barbell) / 2
+      const weightPerSide = Math.max(0, (totalWeightLbs - barbellLbs) / 2);
+
+      // Calculate plates needed for one side
+      const calculatedPlates = calculatePlates(weightPerSide, PLATE_WEIGHTS_LB);
+      setPlates(calculatedPlates);
+
+      // Calculate actual total weight on barbell (plates × 2 + barbell)
+      const platesTotal = calculatedPlates.reduce((sum, plate) => sum + plate, 0);
+      const actualTotalLbs = platesTotal * 2 + barbellLbs;
+
       setDisplayValue(Math.round(actualTotalLbs).toString());
       setDisplayUnit("lbs");
     }
@@ -140,7 +164,10 @@ function App() {
           {/* Plates */}
           <div className="plates-left">
             {plates.map((weight, index) => (
-              <div key={index} className={`plate plate-${weight}`}>
+              <div
+                key={index}
+                className={`plate ${getPlateClassName(weight)} ${displayedPlateUnits === "kg" ? "plate-kg" : ""}`}
+              >
                 <span className="plate-label">{weight}</span>
               </div>
             ))}
