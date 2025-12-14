@@ -63,7 +63,7 @@
 
 .plate-45 {
   height: 250px;
-  width: 28px;
+  width: 24px;
   border-radius: 10px;
 }
 
@@ -75,19 +75,19 @@
 
 .plate-25 {
   height: 150px;
-  width: 20px;
+  width: 24px;
   border-radius: 6px;
 }
 
 .plate-10 {
   height: 100px;
-  width: 16px;
+  width: 24px;
   border-radius: 5px;
 }
 
 .plate-5 {
   height: 50px;
-  width: 12px;
+  width: 24px;
   border-radius: 4px;
 }
 
@@ -314,7 +314,7 @@
 
   .plate-45 {
     height: 180px;
-    width: 22px;
+    width: 18px;
   }
 
   .plate-35 {
@@ -324,17 +324,17 @@
 
   .plate-25 {
     height: 110px;
-    width: 16px;
+    width: 18px;
   }
 
   .plate-10 {
     height: 75px;
-    width: 14px;
+    width: 18px;
   }
 
   .plate-5 {
     height: 40px;
-    width: 10px;
+    width: 18px;
   }
 
   .display {
@@ -391,7 +391,7 @@
 
   .plate-45 {
     height: 120px;
-    width: 16px;
+    width: 14px;
   }
 
   .plate-35 {
@@ -401,17 +401,17 @@
 
   .plate-25 {
     height: 70px;
-    width: 12px;
+    width: 14px;
   }
 
   .plate-10 {
     height: 50px;
-    width: 10px;
+    width: 14px;
   }
 
   .plate-5 {
     height: 28px;
-    width: 8px;
+    width: 14px;
   }
 
   .display {
