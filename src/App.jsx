@@ -89,7 +89,14 @@ function App() {
       {/* Barbell Visualization */}
       <div className="barbell-container">
         <div className="barbell">
-          {/* Left plates */}
+          {/* Display */}
+          <div className="display">
+            <span className="display-value">{displayValue}</span>
+            <span className="display-unit">{displayUnit}</span>
+            <span className="display-label">TOTAL</span>
+          </div>
+
+          {/* Plates */}
           <div className="plates-left">
             <div className="plate plate-45"></div>
             <div className="plate plate-45"></div>
@@ -97,13 +104,6 @@ function App() {
             <div className="plate plate-25"></div>
             <div className="plate plate-10"></div>
             <div className="plate plate-5"></div>
-          </div>
-
-          {/* Center display */}
-          <div className="display">
-            <span className="display-value">{displayValue}</span>
-            <span className="display-unit">{displayUnit}</span>
-            <span className="display-label">TOTAL</span>
           </div>
         </div>
       </div>

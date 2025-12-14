@@ -32,18 +32,16 @@
 
 .barbell {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 }
 
 .plates-left,
 .plates-right {
   display: flex;
-  align-items: center;
-}
-
-.plates-left {
-  flex-direction: row-reverse;
+  align-items: flex-end;
 }
 
 /* Capsule-shaped plates */
