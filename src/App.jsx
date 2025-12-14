@@ -6,8 +6,8 @@ const MAX_KG = 600;
 const MAX_LBS = 1322.77;
 
 // Plate weights (one side)
-const PLATE_WEIGHTS_LB = [45, 35, 25, 10, 5];
-const PLATE_WEIGHTS_KG = [25, 20, 15, 10, 5, 2.5];
+const PLATE_WEIGHTS_LB = [45, 35, 25, 10, 5, 2.5];
+const PLATE_WEIGHTS_KG = [25, 20, 15, 10, 5, 2.5, 1.25, 0.5];
 
 // Barbell weights: value -> {kg, lb}
 const BARBELL_WEIGHTS = {
@@ -121,7 +121,10 @@ function App() {
       setPlates(calculatedPlates);
 
       // Calculate actual total weight on barbell (plates × 2 + barbell)
-      const platesTotal = calculatedPlates.reduce((sum, plate) => sum + plate, 0);
+      const platesTotal = calculatedPlates.reduce(
+        (sum, plate) => sum + plate,
+        0
+      );
       const actualTotalKg = platesTotal * 2 + barbellKg;
 
       setDisplayValue(Math.round(actualTotalKg).toString());
@@ -139,7 +142,10 @@ function App() {
       setPlates(calculatedPlates);
 
       // Calculate actual total weight on barbell (plates × 2 + barbell)
-      const platesTotal = calculatedPlates.reduce((sum, plate) => sum + plate, 0);
+      const platesTotal = calculatedPlates.reduce(
+        (sum, plate) => sum + plate,
+        0
+      );
       const actualTotalLbs = platesTotal * 2 + barbellLbs;
 
       setDisplayValue(Math.round(actualTotalLbs).toString());
@@ -166,7 +172,9 @@ function App() {
             {plates.map((weight, index) => (
               <div
                 key={index}
-                className={`plate ${getPlateClassName(weight)} ${displayedPlateUnits === "kg" ? "plate-kg" : ""}`}
+                className={`plate ${getPlateClassName(weight)} ${
+                  displayedPlateUnits === "kg" ? "plate-kg" : ""
+                }`}
               >
                 <span className="plate-label">{weight}</span>
               </div>

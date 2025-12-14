@@ -90,13 +90,13 @@
 }
 
 .plate-10 {
-  height: 100px;
+  height: 115px;
   width: 24px;
   border-radius: 5px;
 }
 
 .plate-5 {
-  height: 50px;
+  height: 85px;
   width: 24px;
   border-radius: 4px;
 }
@@ -115,9 +115,27 @@
 }
 
 .plate-2-5 {
-  height: 25px;
+  height: 65px;
   width: 24px;
   border-radius: 3px;
+}
+
+.plate-1-25 {
+  height: 20px;
+  width: 24px;
+  border-radius: 2px;
+}
+
+.plate-0-5 {
+  height: 15px;
+  width: 24px;
+  border-radius: 2px;
+}
+
+.plate-0-25 {
+  height: 10px;
+  width: 24px;
+  border-radius: 2px;
 }
 
 /* KG plate colors and heights */
@@ -132,22 +150,22 @@
 
 .plate-kg.plate-20 {
   background: #1e88e5;
-  height: 200px;
+  height: 250px;
 }
 
 .plate-kg.plate-15 {
   background: #fdd835;
-  height: 175px;
+  height: 200px;
 }
 
 .plate-kg.plate-10 {
   background: #43a047;
-  height: 150px;
+  height: 180px;
 }
 
 .plate-kg.plate-5 {
   background: #ffffff;
-  height: 100px;
+  height: 120px;
 }
 
 .plate-kg.plate-5 .plate-label {
@@ -160,7 +178,22 @@
 
 .plate-kg.plate-2-5 {
   background: #212121;
-  height: 50px;
+  height: 90px;
+}
+
+.plate-kg.plate-1-25 {
+  background: #757575;
+  height: 75px;
+}
+
+.plate-kg.plate-0-5 {
+  background: #757575;
+  height: 70px;
+}
+
+.plate-kg.plate-0-25 {
+  background: #757575;
+  height: 65px;
 }
 
 .bar-section {
