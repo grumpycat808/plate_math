@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './App.css';
 
 const KG_TO_LBS = 2.20462;
+const MAX_KG = 600;
+const MAX_LBS = 1322.77;
 
 function App() {
   const [weightKg, setWeightKg] = useState('');
@@ -11,22 +13,60 @@ function App() {
   const [displayUnit, setDisplayUnit] = useState('kg');
 
   const handleKgChange = (e) => {
-    const kg = e.target.value;
-    setWeightKg(kg);
-    if (kg === '' || isNaN(kg)) {
+    const input = e.target.value;
+
+    // Allow empty input
+    if (input === '') {
+      setWeightKg('');
       setWeightLbs('');
-    } else {
-      setWeightLbs((parseFloat(kg) * KG_TO_LBS).toFixed(2));
+      return;
+    }
+
+    // Only allow valid number patterns (digits, one decimal point)
+    if (!/^\d*\.?\d*$/.test(input)) {
+      return;
+    }
+
+    const kg = parseFloat(input);
+
+    // Validate range
+    if (!isNaN(kg)) {
+      if (kg < 0) return;
+      if (kg > MAX_KG) return;
+    }
+
+    setWeightKg(input);
+    if (!isNaN(kg)) {
+      setWeightLbs((kg * KG_TO_LBS).toFixed(2));
     }
   };
 
   const handleLbsChange = (e) => {
-    const lbs = e.target.value;
-    setWeightLbs(lbs);
-    if (lbs === '' || isNaN(lbs)) {
+    const input = e.target.value;
+
+    // Allow empty input
+    if (input === '') {
       setWeightKg('');
-    } else {
-      setWeightKg((parseFloat(lbs) / KG_TO_LBS).toFixed(2));
+      setWeightLbs('');
+      return;
+    }
+
+    // Only allow valid number patterns (digits, one decimal point)
+    if (!/^\d*\.?\d*$/.test(input)) {
+      return;
+    }
+
+    const lbs = parseFloat(input);
+
+    // Validate range
+    if (!isNaN(lbs)) {
+      if (lbs < 0) return;
+      if (lbs > MAX_LBS) return;
+    }
+
+    setWeightLbs(input);
+    if (!isNaN(lbs)) {
+      setWeightKg((lbs / KG_TO_LBS).toFixed(2));
     }
   };
 
