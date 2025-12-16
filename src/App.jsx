@@ -21,7 +21,7 @@ const getPlateClassName = (weight) => {
 };
 
 function App() {
-  const [weightKg, setWeightKg] = useState((225 / KG_TO_LBS).toFixed(2));
+  const [weightKg, setWeightKg] = useState((225 / KG_TO_LBS).toFixed(1));
   const [weightLbs, setWeightLbs] = useState("225");
   const [plateUnits, setPlateUnits] = useState("lb");
   const [barbellWeight, setBarbellWeight] = useState("20");
@@ -84,7 +84,7 @@ function App() {
 
     setWeightLbs(input);
     if (!isNaN(lbs)) {
-      setWeightKg((lbs / KG_TO_LBS).toFixed(2));
+      setWeightKg((lbs / KG_TO_LBS).toFixed(1));
     }
   };
 
