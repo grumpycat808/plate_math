@@ -99,7 +99,8 @@ function App() {
     if (plateUnits === "kg") {
       const totalWeightKg = weightKg ? parseFloat(weightKg) : 0;
       const barbellKg = barbell.kg;
-      const weightPerSide = Math.max(0, (totalWeightKg - barbellKg) / 2);
+      const collarWeightPerSide = 2.5;
+      const weightPerSide = Math.max(0, (totalWeightKg - barbellKg) / 2 - collarWeightPerSide);
       const calculatedPlates = calculatePlates(weightPerSide, PLATE_WEIGHTS_KG);
       setPlates(calculatedPlates);
 
@@ -107,7 +108,7 @@ function App() {
         (sum, plate) => sum + plate,
         0
       );
-      const actualTotalKg = platesTotal * 2 + barbellKg;
+      const actualTotalKg = platesTotal * 2 + barbellKg + collarWeightPerSide * 2;
 
       setDisplayValue(Math.round(actualTotalKg).toString());
       setDisplayUnit("kg");

@@ -214,6 +214,28 @@
   border-radius: 2px;
 }
 
+/* Competition Collar for KG plates */
+.competition-collar {
+  width: 45px;
+  height: 50px;
+  background: linear-gradient(90deg, #d0d0d0 0%, #b0b0b0 30%, #a0a0a0 50%, #b0b0b0 70%, #d0d0d0 100%);
+  border: 2px solid #909090;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1px;
+}
+
+.collar-label {
+  color: #333333;
+  font-size: 0.65rem;
+  font-weight: 600;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
 /* Digital Display */
 .display {
   background: linear-gradient(180deg, #1a4a4a 0%, #0d3535 100%);
@@ -465,6 +487,15 @@
   .plate-2-5 {
     height: 14px;
     width: 14px;
+  }
+
+  .competition-collar {
+    width: 22px;
+    height: 25px;
+  }
+
+  .collar-label {
+    font-size: 0.45rem;
   }
 
   .display {
