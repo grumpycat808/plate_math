@@ -13,6 +13,11 @@ function PlateStack({ plates, plateUnits }) {
           <span className="plate-label">{weight}</span>
         </div>
       ))}
+      {plateUnits === "kg" && (
+        <div className="competition-collar">
+          <span className="collar-label">2.5</span>
+        </div>
+      )}
     </div>
   );
 }
